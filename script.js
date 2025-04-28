@@ -1,19 +1,32 @@
 const apiUrl = "https://lanciweb.github.io/demo/api/pictures/";
-const polaroidPhotos = document.getElementById("polaroid");
+const polaroidPhotos = document.getElementById("polaroids");
 const overlayEl = document.getElementById("overlay");
-
+const btnEl = document.querySelector(".btn");
 axios.get(apiUrl).then((res) => {
   const photos = res.data;
   let photoCardHtml = "";
+
+  // genero l'html per le foto
   photos.forEach((photo) => {
-    console.log(photo);
+    //console.log(photo);
     photoCardHtml += generatePhotoHtml(photo);
-    const overlayCard = document.querySelectorAll(".card");
-    overlayCard.forEach((card) => {
-      card.addEventListener("click", () => {});
-    });
   });
   polaroidPhotos.innerHTML += photoCardHtml;
+  // Recupero le polaroid
+  const overlayCard = document.querySelectorAll(".polaroid");
+  console.log(overlayCard);
+  overlayCard.forEach((card) => {
+    card.addEventListener("click", (event) => {
+      console.log("click");
+
+      overlayEl.classList.remove("d-none");
+      overlayEl.classList.add("d-block");
+      btnEl.addEventListener("click", (event) => {
+        overlayEl.classList.remove("d-block");
+        overlayEl.classList.add("d-none");
+      });
+    });
+  });
 });
 
 const generatePhotoHtml = (photo) => {
@@ -21,7 +34,7 @@ const generatePhotoHtml = (photo) => {
             class="col-sm-12 col-md-5 col-lg-4 my-5 d-flex justify-content-center"
             --
           ><div
-              class="card justify-content-center align-items-center py-2"
+              class="polaroid card justify-content-center align-items-center py-2"
               style="width: 18rem"
             >
               <div>
