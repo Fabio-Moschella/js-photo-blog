@@ -1,4 +1,36 @@
-.image-bg {
+.wall-image-bg {
   background-image: url(../img/wall.png);
   height: 300px;
+}
+.cork-image-bg {
+  background-image: url(../img/cork.png);
+}
+.summer-title {
+  font-family: "Edu Tas Beginner", sans-serif;
+  font-size: 6rem;
+  font-weight: 900;
+}
+.orso-img {
+  width: 95%;
+  height: 70%;
+}
+.card {
+  position: relative;
+}
+.pin-img {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.card-body {
+  font-family: "Edu Tas Beginner", sans-serif;
+}
+
+#overlay {
+  position: fixed;
+  z-index: 3;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
 }

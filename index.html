@@ -19,6 +19,13 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <!--GOOGLE FONT-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400..700&family=Nerko+One&display=swap"
+      rel="stylesheet"
+    />
     <!--CSS-->
 
     <link rel="stylesheet" href="./css/style.css" />
@@ -31,26 +38,28 @@
   <body>
     <header>
       <div
-        class="bg-cover bg-center image-bg d-flex align-items-center justify-content-center"
+        class="bg-cover bg-center wall-image-bg d-flex align-items-center justify-content-center"
       >
-        <h1 class="">ESTATE 2024</h1>
+        <h1 class="summer-title">ESTATE'25</h1>
       </div>
     </header>
-    <main>
+    <main class="bg-cover bg-center cork-image-bg vh-100">
       <div class="container">
-        <div class="row">
-          <div class="col-4">
-            <div class="card"></div>
-          </div>
-          <div class="col-4">
-            <div class="card"></div>
-          </div>
-          <div class="col-4">
-            <div class="card"></div>
-          </div>
-        </div>
+        <div id="polaroid" class="row"></div>
       </div>
     </main>
-    <script src="./main.js"></script>
+    <!--<div class= 'z-3 vw-100 vh-100 position-fixed bg-dark bg-opacity-10 rounded-3'>-->
+    <div
+      id="overlay"
+      class="d-flex align-items-center flex-column justify-content-center d-none"
+    >
+      <!-- <div>
+        <button class="btn btn-danger mb-5">Chiudi</button>
+      </div>
+      <div>
+        <img src="./img/dilorenzo.jpg" alt="" />
+      </div> -->
+    </div>
+    <script src="./script.js"></script>
   </body>
 </html>
