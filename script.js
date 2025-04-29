@@ -1,7 +1,7 @@
 const apiUrl = "https://lanciweb.github.io/demo/api/pictures/";
 const polaroidPhotos = document.getElementById("polaroids");
 const overlayEl = document.getElementById("overlay");
-const btnEl = document.querySelector(".btn");
+
 axios.get(apiUrl).then((res) => {
   const photos = res.data;
   let photoCardHtml = "";
@@ -11,17 +11,37 @@ axios.get(apiUrl).then((res) => {
     //console.log(photo);
     photoCardHtml += generatePhotoHtml(photo);
   });
+
   polaroidPhotos.innerHTML += photoCardHtml;
+
   // Recupero le polaroid
   const overlayCard = document.querySelectorAll(".polaroid");
+
   console.log(overlayCard);
+
   overlayCard.forEach((card) => {
     card.addEventListener("click", (event) => {
-      console.log("click");
+      const target = event.target;
+      const polaroidEl = target.closest(".polaroid");
+      const overlayImg = polaroidEl.querySelector("img.card-img-top").src;
+      console.log(overlayImg);
 
+      // const clickedImg = card.querySelector(".orso-img");
+      // const overlayImg = overlayEl.querySelector("img");
+      // // overlayImg.src = clickedImg.src;
+      // overlayImg.alt = clickedImg.alt;
+      overlayEl.innerHTML = `<div>
+        <button class="btn btn-danger mb-5">Chiudi</button>
+      </div>
+     <div>
+        <img class="overlay-img" src="${overlayImg}" alt="" />
+      </div>`;
       overlayEl.classList.remove("d-none");
       overlayEl.classList.add("d-block");
-      btnEl.addEventListener("click", (event) => {
+
+      const btnEl = document.querySelector(".btn");
+
+      btnEl.addEventListener("click", () => {
         overlayEl.classList.remove("d-block");
         overlayEl.classList.add("d-none");
       });
@@ -34,6 +54,7 @@ const generatePhotoHtml = (photo) => {
             class="col-sm-12 col-md-5 col-lg-4 my-5 d-flex justify-content-center"
             --
           ><div
+              data-test="${photo.url}"
               class="polaroid card justify-content-center align-items-center py-2"
               style="width: 18rem"
             >
